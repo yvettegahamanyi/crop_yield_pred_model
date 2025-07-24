@@ -1,3 +1,4 @@
+import 'package:crop_yield_prediction_app/screen/prediction-form.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,11 +12,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Crop Yield Predictor',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primarySwatch: Colors.green,
+        primaryColor: Color(0xFF2E7D32),
+        fontFamily: 'Roboto',
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: CropPredictionForm(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
