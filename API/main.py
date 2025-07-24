@@ -28,8 +28,8 @@ app.add_middleware(
 
 # Load the trained model and feature names
 try:
-    model = joblib.load('best_model.pkl')
-    feature_names = joblib.load('feature_names.pkl')
+    model = joblib.load('API/best_model.pkl')
+    feature_names = joblib.load('API/feature_names.pkl')
     print("Model and feature names loaded successfully")
 except FileNotFoundError as e:
     print(f"Error loading model files: {e}")
