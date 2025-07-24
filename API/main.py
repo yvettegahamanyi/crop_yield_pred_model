@@ -142,23 +142,7 @@ async def root():
         "message": "Welcome to Crop Yield Prediction API!",
     }
 
-# Get valid areas endpoint
-@app.get("/valid-areas", tags=["Reference Data"])
-async def get_valid_areas():
-    """
-    Get list of valid areas/countries
-    """
-    return {"valid_areas": VALID_AREAS}
-
-# Get valid items endpoint
-@app.get("/valid-items", tags=["Reference Data"])
-async def get_valid_items():
-    """
-    Get list of valid crop items
-    """
-    return {"valid_items": VALID_ITEMS}
-
-# Main prediction endpoint
+# prediction endpoint
 @app.post("/predict", response_model=CropYieldPredictionResponse, tags=["Prediction"])
 async def predict_crop_yield(request: CropYieldPredictionRequest):
     """
