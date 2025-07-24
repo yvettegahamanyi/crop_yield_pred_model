@@ -242,56 +242,6 @@ async def predict_crop_yield(request: CropYieldPredictionRequest):
             detail=f"Error making prediction: {str(e)}"
         )
 
-# Batch prediction endpoint
-@app.post("/predict-batch", tags=["Prediction"])
-async def predict_crop_yield_batch(requests: list[CropYieldPredictionRequest]):
-    """
-    Predict crop yield for multiple data points at once
-    """
-    if model is None or feature_names is None:
-        raise HTTPException(
-            status_code=500, 
-            detail="Model not loaded. Please ensure model files are available."
-        )
-    
-    try:
-        predictions = []
-        for request in requests:
-            # Reuse the single prediction logic
-            result = await predict_crop_yield(request)
-            predictions.append(result)
-        
-        return {
-            "predictions": predictions,
-            "total_predictions": len(predictions)
-        }
-        
-    except Exception as e:
-        raise HTTPException(
-            status_code=400, 
-            detail=f"Error making batch predictions: {str(e)}"
-        )
-
-# Model information endpoint
-@app.get("/model-info", tags=["Model"])
-async def get_model_info():
-    """
-    Get information about the loaded model
-    """
-    if model is None:
-        raise HTTPException(
-            status_code=500, 
-            detail="Model not loaded"
-        )
-    
-    return {
-        "model_type": str(type(model).__name__),
-        "total_features": len(feature_names) if feature_names else 0,
-        "feature_names": feature_names[:10] if feature_names else [],  # Show first 10 features
-        "valid_areas_count": len(VALID_AREAS),
-        "valid_items_count": len(VALID_ITEMS)
-    }
-
 # Run the application
 if __name__ == "__main__":
     uvicorn.run(
