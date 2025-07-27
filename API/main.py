@@ -1,11 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, validator
-from typing import Literal
 import joblib
 import pandas as pd
-import numpy as np
-from pathlib import Path
 import uvicorn
 
 # Initialize FastAPI app
@@ -13,14 +10,13 @@ app = FastAPI(
     title="Crop Yield Prediction API",
     description="API for predicting crop yield based on environmental and agricultural factors",
     version="1.0.0",
-    docs_url="/docs",  # Swagger UI documentation path
-    redoc_url="/redoc"  # Alternative documentation
+    docs_url="/docs",  
 )
 
 # Configure CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify actual origins
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -229,7 +225,7 @@ async def predict_crop_yield(request: CropYieldPredictionRequest):
 # Run the application
 if __name__ == "__main__":
     uvicorn.run(
-        "main:app",  # Replace "main" with your actual filename if different
+        "main:app",
         host="0.0.0.0",
         port=8000,
         reload=True
