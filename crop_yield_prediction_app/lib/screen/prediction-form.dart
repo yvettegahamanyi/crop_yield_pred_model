@@ -283,7 +283,7 @@ class _CropPredictionFormState extends State<CropPredictionForm>
                   padding: EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      Icon(Icons.agriculture, size: 60, color: Colors.white),
+                      // Icon(Icons.agriculture, size: 60, color: Colors.white),
                       SizedBox(height: 10),
                       Text(
                         'Crop Yield Predictor',
@@ -294,10 +294,10 @@ class _CropPredictionFormState extends State<CropPredictionForm>
                         ),
                       ),
                       SizedBox(height: 5),
-                      Text(
-                        'Enter crop details to predict yield',
-                        style: TextStyle(fontSize: 16, color: Colors.white70),
-                      ),
+                      // Text(
+                      //   'Enter crop details to predict yield',
+                      //   style: TextStyle(fontSize: 16, color: Colors.white70),
+                      // ),
                     ],
                   ),
                 ),
@@ -321,7 +321,7 @@ class _CropPredictionFormState extends State<CropPredictionForm>
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Text(
-                              'Prediction Parameters',
+                              'Form',
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
